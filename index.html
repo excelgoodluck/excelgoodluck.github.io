@@ -6,516 +6,149 @@
 <title>Greatness✌️ — Excel Goodluck</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --black: #0a0a0a;
-    --white: #f5f5f0;
-    --gray: #1a1a1a;
-    --mid: #2e2e2e;
-    --accent: #ffffff;
-    --pop1: #e8ff00; /* electric yellow */
-    --pop2: #ff3c3c; /* vivid red */
-    --pop3: #00e5ff; /* cyan */
-  }
-
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    cursor: none;
-    overflow-x: hidden;
-  }
-
-  /* CUSTOM CURSOR */
-  .cursor {
-    width: 12px; height: 12px;
-    background: var(--pop1);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.1s ease;
-    mix-blend-mode: difference;
-  }
-  .cursor-ring {
-    width: 36px; height: 36px;
-    border: 1.5px solid var(--pop1);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9998;
-    transition: all 0.15s ease;
-    mix-blend-mode: difference;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.5rem 3rem;
-    background: rgba(10,10,10,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid #1f1f1f;
-  }
-  .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
-    letter-spacing: 0.1em;
-    color: var(--white);
-  }
-  .nav-logo span { color: var(--pop1); }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #888;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--pop1); }
+  :root { --black:#0a0a0a; --white:#f5f5f0; --gray:#1a1a1a; --mid:#2e2e2e; --pop1:#e8ff00; --pop2:#ff3c3c; --pop3:#00e5ff; }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;cursor:none;overflow-x:hidden;}
+  .cursor{width:12px;height:12px;background:var(--pop1);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transition:transform .1s ease;mix-blend-mode:difference;}
+  .cursor-ring{width:36px;height:36px;border:1.5px solid var(--pop1);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transition:all .15s ease;mix-blend-mode:difference;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.5rem 3rem;background:rgba(10,10,10,.9);backdrop-filter:blur(12px);border-bottom:1px solid #1f1f1f;}
+  .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.1em;}
+  .nav-logo span{color:var(--pop1);}
+  .nav-links{display:flex;gap:2.5rem;list-style:none;}
+  .nav-links a{font-family:'Syne',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#888;text-decoration:none;transition:color .2s;}
+  .nav-links a:hover{color:var(--pop1);}
 
   /* HERO */
-  #hero {
-    min-height: 100vh;
-    display: flex; align-items: center;
-    padding: 8rem 3rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 60% 50% at 80% 50%, rgba(232,255,0,0.06) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(0,229,255,0.04) 0%, transparent 60%);
-  }
-  .hero-grid {
-    position: absolute; inset: 0;
-    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-  .hero-content { position: relative; z-index: 2; max-width: 900px; }
-  .hero-tag {
-    display: inline-block;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--pop1);
-    border: 1px solid var(--pop1);
-    padding: 0.4rem 1rem;
-    margin-bottom: 2rem;
-    animation: fadeUp 0.6s ease both;
-  }
-  .hero-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(5rem, 14vw, 13rem);
-    line-height: 0.9;
-    letter-spacing: -0.01em;
-    animation: fadeUp 0.7s ease 0.1s both;
-  }
-  .hero-name .line2 { color: var(--pop1); }
-  .hero-sub {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(1rem, 2vw, 1.3rem);
-    font-weight: 400;
-    color: #aaa;
-    margin-top: 1.5rem;
-    max-width: 480px;
-    line-height: 1.6;
-    animation: fadeUp 0.7s ease 0.2s both;
-  }
-  .hero-sub strong { color: var(--white); font-weight: 600; }
-  .hero-cta {
-    display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;
-    animation: fadeUp 0.7s ease 0.3s both;
-  }
-  .btn-primary {
-    background: var(--pop1); color: var(--black);
-    font-family: 'Syne', sans-serif;
-    font-weight: 700; font-size: 0.85rem;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 0.9rem 2rem;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  .btn-primary:hover { background: var(--white); transform: translateY(-2px); }
-  .btn-outline {
-    border: 1.5px solid #444; color: var(--white);
-    font-family: 'Syne', sans-serif;
-    font-weight: 600; font-size: 0.85rem;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 0.9rem 2rem;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  .btn-outline:hover { border-color: var(--white); transform: translateY(-2px); }
+  #hero{min-height:100vh;display:flex;align-items:center;padding:8rem 3rem 4rem;position:relative;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 80% 50%,rgba(232,255,0,.06) 0%,transparent 70%),radial-gradient(ellipse 40% 60% at 10% 80%,rgba(0,229,255,.04) 0%,transparent 60%);}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:60px 60px;}
+  .hero-content{position:relative;z-index:2;max-width:860px;}
+  .hero-tag{display:inline-block;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--pop1);border:1px solid var(--pop1);padding:.4rem 1rem;margin-bottom:2rem;animation:fadeUp .6s ease both;}
+  .hero-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,14vw,13rem);line-height:.9;animation:fadeUp .7s ease .1s both;}
+  .hero-name .line2{color:var(--pop1);}
+  .hero-sub{font-family:'Syne',sans-serif;font-size:clamp(1rem,2vw,1.3rem);font-weight:400;color:#aaa;margin-top:1.5rem;max-width:480px;line-height:1.6;animation:fadeUp .7s ease .2s both;}
+  .hero-sub strong{color:var(--white);font-weight:600;}
+  .hero-profile{position:absolute;right:3rem;bottom:2rem;z-index:2;animation:fadeUp .7s ease .3s both;}
+  .hero-profile img{width:200px;height:200px;object-fit:cover;object-position:top center;border-radius:50%;border:3px solid var(--pop1);filter:grayscale(10%);}
+  .hero-cta{display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;animation:fadeUp .7s ease .3s both;}
+  .btn-primary{background:var(--pop1);color:var(--black);font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem;}
+  .btn-primary:hover{background:var(--white);transform:translateY(-2px);}
+  .btn-resume{background:transparent;color:var(--pop1);border:1.5px solid var(--pop1);font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem;}
+  .btn-resume:hover{background:var(--pop1);color:var(--black);transform:translateY(-2px);}
+  .btn-outline{border:1.5px solid #444;color:var(--white);font-family:'Syne',sans-serif;font-weight:600;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;transition:all .2s;}
+  .btn-outline:hover{border-color:var(--white);transform:translateY(-2px);}
+  .hero-stats{display:flex;gap:3rem;margin-top:4rem;animation:fadeUp .7s ease .4s both;}
+  .stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--pop1);line-height:1;}
+  .stat-label{font-size:.75rem;color:#666;text-transform:uppercase;letter-spacing:.1em;margin-top:.2rem;}
 
-  .hero-stats {
-    display: flex; gap: 3rem; margin-top: 4rem;
-    animation: fadeUp 0.7s ease 0.4s both;
-  }
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.5rem;
-    color: var(--pop1);
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 0.75rem;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-top: 0.2rem;
-  }
-
-  /* SECTION STYLES */
-  section { padding: 6rem 3rem; }
-  .section-label {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--pop1);
-    margin-bottom: 1rem;
-  }
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(3rem, 7vw, 6rem);
-    line-height: 1;
-    margin-bottom: 1.5rem;
-  }
+  section{padding:6rem 3rem;}
+  .section-label{font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--pop1);margin-bottom:1rem;}
+  .section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,6rem);line-height:1;margin-bottom:1.5rem;}
 
   /* ABOUT */
-  #about { background: var(--gray); }
-  .about-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
-    max-width: 1100px; margin: 0 auto;
-  }
-  .about-visual {
-    position: relative;
-  }
-  .about-box {
-    width: 100%; aspect-ratio: 3/4;
-    background: var(--mid);
-    border: 1px solid #333;
-    position: relative;
-    overflow: hidden;
-  }
-  .about-box::before {
-    content: 'EXCEL\AGOODLUCK';
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 8rem;
-    color: rgba(255,255,255,0.03);
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%) rotate(-30deg);
-    white-space: nowrap;
-    line-height: 1;
-  }
-  .about-initials {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 8rem;
-    color: var(--pop1);
-    line-height: 1;
-    text-align: center;
-  }
-  .about-accent {
-    position: absolute; bottom: -1rem; right: -1rem;
-    width: 120px; height: 120px;
-    background: var(--pop1);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.1rem;
-    color: var(--black);
-    text-align: center;
-    line-height: 1.2;
-  }
-  .about-text p {
-    font-size: 1.05rem;
-    color: #bbb;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-  }
-  .about-text p strong { color: var(--white); }
-  .tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
-  .tag {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.4rem 1rem;
-    border: 1px solid #333;
-    color: #888;
-    transition: all 0.2s;
-  }
-  .tag:hover { border-color: var(--pop1); color: var(--pop1); }
+  #about{background:var(--gray);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1100px;margin:0 auto;}
+  .about-photo{position:relative;}
+  .about-photo img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center;border:1px solid #333;filter:grayscale(15%);}
+  .about-accent{position:absolute;bottom:-1rem;right:-1rem;width:120px;height:120px;background:var(--pop1);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--black);text-align:center;line-height:1.2;}
+  .about-text p{font-size:1.05rem;color:#bbb;line-height:1.8;margin-bottom:1.5rem;}
+  .about-text p strong{color:var(--white);}
+  .tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem;}
+  .tag{font-family:'Syne',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.4rem 1rem;border:1px solid #333;color:#888;transition:all .2s;}
+  .tag:hover{border-color:var(--pop1);color:var(--pop1);}
 
   /* PORTFOLIO */
-  #portfolio { background: var(--black); }
-  .portfolio-header { max-width: 1100px; margin: 0 auto 3rem; }
-  .portfolio-filters {
-    display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;
-  }
-  .filter-btn {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.78rem; font-weight: 700;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 0.5rem 1.2rem;
-    border: 1.5px solid #333;
-    background: transparent; color: #666;
-    cursor: pointer; transition: all 0.2s;
-  }
-  .filter-btn.active, .filter-btn:hover {
-    border-color: var(--pop1); color: var(--pop1);
-  }
-  .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5px;
-    max-width: 1100px; margin: 0 auto;
-  }
-  .portfolio-item {
-    aspect-ratio: 4/3;
-    background: var(--mid);
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  .portfolio-item:nth-child(1) { grid-column: span 2; aspect-ratio: auto; min-height: 340px; }
-  .portfolio-item-bg {
-    position: absolute; inset: 0;
-    transition: transform 0.5s ease;
-  }
-  .portfolio-item:hover .portfolio-item-bg { transform: scale(1.05); }
-  .p1 .portfolio-item-bg { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); }
-  .p2 .portfolio-item-bg { background: linear-gradient(135deg, #2d1b00, #4a2c00, #ff6b00); }
-  .p3 .portfolio-item-bg { background: linear-gradient(135deg, #001a1a, #003333, #00e5ff22); }
-  .p4 .portfolio-item-bg { background: linear-gradient(135deg, #1a001a, #330033, #9900ff22); }
-  .p5 .portfolio-item-bg { background: linear-gradient(135deg, #1a1a00, #333300, #e8ff0022); }
-  .p6 .portfolio-item-bg { background: linear-gradient(135deg, #001a0a, #003315, #00ff5522); }
-  .portfolio-placeholder {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 5rem;
-    color: rgba(255,255,255,0.06);
-  }
-  .portfolio-overlay {
-    position: absolute; inset: 0;
-    background: rgba(0,0,0,0.7);
-    display: flex; flex-direction: column;
-    justify-content: flex-end; padding: 1.5rem;
-    opacity: 0; transition: opacity 0.3s;
-  }
-  .portfolio-item:hover .portfolio-overlay { opacity: 1; }
-  .portfolio-overlay h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.1rem; font-weight: 700;
-    margin-bottom: 0.3rem;
-  }
-  .portfolio-overlay p { font-size: 0.8rem; color: #aaa; }
-  .portfolio-overlay .p-tag {
-    display: inline-block;
-    font-size: 0.65rem; font-weight: 700;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--pop1); margin-bottom: 0.5rem;
-  }
-  .upload-note {
-    text-align: center; margin-top: 2rem;
-    font-size: 0.85rem; color: #555;
-    font-style: italic;
-  }
-  .upload-note span { color: var(--pop1); }
+  #portfolio{background:var(--black);}
+  .portfolio-header{max-width:1100px;margin:0 auto 3rem;}
+  .portfolio-filters{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;}
+  .filter-btn{font-family:'Syne',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1.2rem;border:1.5px solid #333;background:transparent;color:#666;cursor:pointer;transition:all .2s;}
+  .filter-btn.active,.filter-btn:hover{border-color:var(--pop1);color:var(--pop1);}
+  .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:1100px;margin:0 auto;}
+  .portfolio-item{position:relative;overflow:hidden;cursor:pointer;background:var(--mid);}
+  .portfolio-item.large{grid-column:span 2;}
+  .portfolio-item img{width:100%;height:100%;min-height:280px;object-fit:cover;display:block;transition:transform .5s ease;}
+  .portfolio-item video{width:100%;height:100%;min-height:280px;object-fit:cover;display:block;transition:transform .5s ease;}
+  .portfolio-item:hover img,.portfolio-item:hover video{transform:scale(1.05);}
+  .portfolio-overlay{position:absolute;inset:0;background:rgba(0,0,0,.78);display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem;opacity:0;transition:opacity .3s;}
+  .portfolio-item:hover .portfolio-overlay{opacity:1;}
+  .portfolio-overlay h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:.3rem;}
+  .portfolio-overlay p{font-size:.8rem;color:#aaa;}
+  .p-tag{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--pop1);margin-bottom:.5rem;}
+  .video-badge{position:absolute;top:1rem;right:1rem;background:var(--pop1);color:var(--black);font-family:'Syne',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;padding:.3rem .7rem;z-index:2;}
 
-  /* WEEKLY HIGHLIGHTS */
-  #highlights { background: var(--gray); }
-  .highlights-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
-    max-width: 1100px; margin: 0 auto;
-  }
-  .highlight-card {
-    background: var(--mid);
-    border: 1px solid #2a2a2a;
-    padding: 1.8rem;
-    transition: all 0.3s;
-    position: relative; overflow: hidden;
-  }
-  .highlight-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: var(--pop1);
-    transform: scaleX(0); transform-origin: left;
-    transition: transform 0.3s;
-  }
-  .highlight-card:hover::before { transform: scaleX(1); }
-  .highlight-card:hover { transform: translateY(-4px); border-color: #3a3a3a; }
-  .highlight-week {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.7rem; font-weight: 700;
-    letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--pop1); margin-bottom: 0.8rem;
-  }
-  .highlight-card h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.05rem; font-weight: 700;
-    margin-bottom: 0.8rem; line-height: 1.4;
-  }
-  .highlight-card p { font-size: 0.88rem; color: #888; line-height: 1.7; }
-  .highlight-meta {
-    margin-top: 1.2rem; font-size: 0.75rem; color: #555;
-    display: flex; align-items: center; gap: 0.5rem;
-  }
-  .highlight-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--pop1); }
+  /* HIGHLIGHTS */
+  #highlights{background:var(--gray);}
+  .highlights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:0 auto;}
+  .highlight-card{background:var(--mid);border:1px solid #2a2a2a;padding:1.8rem;transition:all .3s;position:relative;overflow:hidden;}
+  .highlight-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--pop1);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+  .highlight-card:hover::before{transform:scaleX(1);}
+  .highlight-card:hover{transform:translateY(-4px);}
+  .highlight-week{font-family:'Syne',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--pop1);margin-bottom:.8rem;}
+  .highlight-card h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.8rem;line-height:1.4;}
+  .highlight-card p{font-size:.88rem;color:#888;line-height:1.7;}
+  .highlight-meta{margin-top:1.2rem;font-size:.75rem;color:#555;display:flex;align-items:center;gap:.5rem;}
+  .highlight-dot{width:6px;height:6px;border-radius:50%;background:var(--pop1);}
 
   /* NEWS */
-  #news { background: var(--black); }
-  .news-list { max-width: 1100px; margin: 0 auto; }
-  .news-item {
-    display: grid; grid-template-columns: auto 1fr auto;
-    gap: 2rem; align-items: center;
-    padding: 1.8rem 0;
-    border-bottom: 1px solid #1e1e1e;
-    transition: all 0.2s;
-  }
-  .news-item:hover { padding-left: 1rem; }
-  .news-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem; color: #333; line-height: 1;
-    min-width: 3rem;
-  }
-  .news-content h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.05rem; font-weight: 700; margin-bottom: 0.3rem;
-  }
-  .news-content p { font-size: 0.85rem; color: #777; line-height: 1.6; }
-  .news-tag-cat {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.65rem; font-weight: 700;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    padding: 0.3rem 0.8rem;
-    white-space: nowrap;
-  }
-  .cat-tech { border: 1px solid var(--pop3); color: var(--pop3); }
-  .cat-faith { border: 1px solid var(--pop1); color: var(--pop1); }
-  .cat-politics { border: 1px solid var(--pop2); color: var(--pop2); }
-  .cat-design { border: 1px solid #cc00ff; color: #cc00ff; }
+  #news{background:var(--black);}
+  .news-list{max-width:1100px;margin:0 auto;}
+  .news-item{display:grid;grid-template-columns:auto 1fr auto;gap:2rem;align-items:center;padding:1.8rem 0;border-bottom:1px solid #1e1e1e;transition:all .2s;}
+  .news-item:hover{padding-left:1rem;}
+  .news-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:#333;line-height:1;min-width:3rem;}
+  .news-content h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.3rem;}
+  .news-content p{font-size:.85rem;color:#777;line-height:1.6;}
+  .news-tag-cat{font-family:'Syne',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:.3rem .8rem;white-space:nowrap;}
+  .cat-tech{border:1px solid var(--pop3);color:var(--pop3);}
+  .cat-faith{border:1px solid var(--pop1);color:var(--pop1);}
+  .cat-politics{border:1px solid var(--pop2);color:var(--pop2);}
+  .cat-design{border:1px solid #cc00ff;color:#cc00ff;}
 
   /* CONTACT */
-  #contact { background: var(--gray); }
-  .contact-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
-    max-width: 1100px; margin: 0 auto; align-items: start;
-  }
-  .contact-info p {
-    color: #888; font-size: 1rem; line-height: 1.8; margin-bottom: 2rem;
-  }
-  .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
-  .contact-link {
-    display: flex; align-items: center; gap: 1rem;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.85rem; color: #777;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .contact-link:hover { color: var(--pop1); }
-  .contact-link-icon {
-    width: 36px; height: 36px;
-    border: 1px solid #333;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.9rem;
-    transition: all 0.2s;
-  }
-  .contact-link:hover .contact-link-icon { border-color: var(--pop1); background: var(--pop1); color: var(--black); }
-  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-  .form-group label {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.72rem; font-weight: 700;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    color: #555;
-  }
-  .form-group input, .form-group textarea {
-    background: var(--mid);
-    border: 1px solid #2a2a2a;
-    color: var(--white);
-    padding: 0.9rem 1.1rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    resize: none;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .form-group input:focus, .form-group textarea:focus { border-color: var(--pop1); }
-  .form-group textarea { min-height: 120px; }
-  .btn-send {
-    background: var(--pop1); color: var(--black);
-    font-family: 'Syne', sans-serif;
-    font-weight: 700; font-size: 0.85rem;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 1rem 2rem;
-    border: none; cursor: pointer;
-    transition: all 0.2s; align-self: flex-start;
-  }
-  .btn-send:hover { background: var(--white); transform: translateY(-2px); }
+  #contact{background:var(--gray);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;max-width:1100px;margin:0 auto;align-items:start;}
+  .contact-info p{color:#888;font-size:1rem;line-height:1.8;margin-bottom:2rem;}
+  .contact-links{display:flex;flex-direction:column;gap:.8rem;}
+  .contact-link{display:flex;align-items:center;gap:1rem;font-family:'Syne',sans-serif;font-size:.85rem;color:#777;text-decoration:none;transition:color .2s;}
+  .contact-link:hover{color:var(--pop1);}
+  .contact-link-icon{width:36px;height:36px;border:1px solid #333;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .2s;}
+  .contact-link:hover .contact-link-icon{border-color:var(--pop1);background:var(--pop1);color:var(--black);}
+  .contact-form{display:flex;flex-direction:column;gap:1rem;}
+  .form-group{display:flex;flex-direction:column;gap:.4rem;}
+  .form-group label{font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#555;}
+  .form-group input,.form-group textarea{background:var(--mid);border:1px solid #2a2a2a;color:var(--white);padding:.9rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:.95rem;resize:none;outline:none;transition:border-color .2s;}
+  .form-group input:focus,.form-group textarea:focus{border-color:var(--pop1);}
+  .form-group textarea{min-height:120px;}
+  .btn-send{background:var(--pop1);color:var(--black);font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;padding:1rem 2rem;border:none;cursor:pointer;transition:all .2s;align-self:flex-start;}
+  .btn-send:hover{background:var(--white);transform:translateY(-2px);}
+  .btn-send:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+  .form-success{display:none;background:var(--pop1);color:var(--black);padding:1rem 1.5rem;font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;margin-top:.5rem;}
+  .form-error{display:none;background:var(--pop2);color:var(--white);padding:1rem 1.5rem;font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;margin-top:.5rem;}
 
-  /* FOOTER */
-  footer {
-    background: var(--black);
-    border-top: 1px solid #1a1a1a;
-    padding: 2.5rem 3rem;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .footer-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5rem; letter-spacing: 0.1em;
-  }
-  .footer-logo span { color: var(--pop1); }
-  .footer-copy { font-size: 0.8rem; color: #444; }
-  .footer-socials { display: flex; gap: 1rem; }
-  .social-btn {
-    width: 36px; height: 36px;
-    border: 1px solid #2a2a2a;
-    display: flex; align-items: center; justify-content: center;
-    color: #555; text-decoration: none; font-size: 0.8rem;
-    font-family: 'Syne', sans-serif; font-weight: 700;
-    transition: all 0.2s;
-  }
-  .social-btn:hover { border-color: var(--pop1); color: var(--pop1); }
+  footer{background:var(--black);border-top:1px solid #1a1a1a;padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center;}
+  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.1em;}
+  .footer-logo span{color:var(--pop1);}
+  .footer-copy{font-size:.8rem;color:#444;}
+  .footer-socials{display:flex;gap:1rem;}
+  .social-btn{width:36px;height:36px;border:1px solid #2a2a2a;display:flex;align-items:center;justify-content:center;color:#555;text-decoration:none;font-size:.8rem;font-family:'Syne',sans-serif;font-weight:700;transition:all .2s;}
+  .social-btn:hover{border-color:var(--pop1);color:var(--pop1);}
 
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+  ::-webkit-scrollbar{width:4px;}
+  ::-webkit-scrollbar-track{background:var(--black);}
+  ::-webkit-scrollbar-thumb{background:var(--pop1);}
 
-  /* SCROLLBAR */
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: var(--black); }
-  ::-webkit-scrollbar-thumb { background: var(--pop1); }
-
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    section { padding: 4rem 1.5rem; }
-    #hero { padding: 7rem 1.5rem 3rem; }
-    .hero-stats { gap: 2rem; flex-wrap: wrap; }
-    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .portfolio-grid { grid-template-columns: 1fr 1fr; }
-    .portfolio-item:nth-child(1) { grid-column: span 2; }
-    .highlights-grid { grid-template-columns: 1fr; }
-    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  @media(max-width:768px){
+    nav{padding:1rem 1.5rem;}
+    .nav-links{display:none;}
+    section{padding:4rem 1.5rem;}
+    #hero{padding:7rem 1.5rem 3rem;}
+    .hero-profile{display:none;}
+    .about-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem;}
+    .portfolio-grid{grid-template-columns:1fr 1fr;}
+    .portfolio-item.large{grid-column:span 2;}
+    .highlights-grid{grid-template-columns:1fr;}
+    footer{flex-direction:column;gap:1rem;text-align:center;}
   }
 </style>
 </head>
@@ -524,7 +157,6 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">GREAT<span>NESS</span>✌️</div>
   <ul class="nav-links">
@@ -542,41 +174,29 @@
   <div class="hero-grid"></div>
   <div class="hero-content">
     <div class="hero-tag">Creative Portfolio — Nigeria 🇳🇬</div>
-    <h1 class="hero-name">
-      EXCEL<br>
-      <span class="line2">GOOD-<br>LUCK</span>
-    </h1>
-    <p class="hero-sub">
-      <strong>Graphics Designer & 3D Animator</strong> — crafting bold visuals that speak, move, and inspire. Driven by <strong>faith</strong>, fueled by <strong>tech</strong>, shaped by <strong>purpose</strong>.
-    </p>
+    <h1 class="hero-name">EXCEL<br><span class="line2">GOOD-<br>LUCK</span></h1>
+    <p class="hero-sub"><strong>Graphics Designer & 3D Animator</strong> — crafting bold visuals that speak, move, and inspire. Driven by <strong>faith</strong>, fueled by <strong>tech</strong>, shaped by <strong>purpose</strong>.</p>
     <div class="hero-cta">
       <a href="#portfolio" class="btn-primary">View My Work</a>
+      <a href="Excel_Goodluck_Resume_v3.pdf" download class="btn-resume">↓ Download Resume</a>
       <a href="#contact" class="btn-outline">Get In Touch</a>
     </div>
     <div class="hero-stats">
-      <div>
-        <div class="stat-num">3D</div>
-        <div class="stat-label">Animation</div>
-      </div>
-      <div>
-        <div class="stat-num">GFX</div>
-        <div class="stat-label">Design</div>
-      </div>
-      <div>
-        <div class="stat-num">NGR</div>
-        <div class="stat-label">Based</div>
-      </div>
+      <div><div class="stat-num">3D</div><div class="stat-label">Animation</div></div>
+      <div><div class="stat-num">GFX</div><div class="stat-label">Design</div></div>
+      <div><div class="stat-num">NGR</div><div class="stat-label">Based</div></div>
     </div>
+  </div>
+  <div class="hero-profile">
+    <img src="IMG-20260309-WA0000.jpg" alt="Excel Goodluck — Greatness">
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
   <div class="about-grid">
-    <div class="about-visual">
-      <div class="about-box">
-        <div class="about-initials">EG</div>
-      </div>
+    <div class="about-photo">
+      <img src="IMG-20260309-WA0000.jpg" alt="Excel Goodluck">
       <div class="about-accent">GREAT<br>NESS<br>✌️</div>
     </div>
     <div class="about-text">
@@ -588,8 +208,9 @@
       <div class="tags">
         <span class="tag">Graphics Design</span>
         <span class="tag">3D Animation</span>
+        <span class="tag">Brand Design</span>
+        <span class="tag">Motion Design</span>
         <span class="tag">Tech</span>
-        <span class="tag">Politics</span>
         <span class="tag">Faith</span>
         <span class="tag">Nigeria 🇳🇬</span>
       </div>
@@ -607,66 +228,54 @@
       <button class="filter-btn">Graphics</button>
       <button class="filter-btn">3D Animation</button>
       <button class="filter-btn">Branding</button>
-      <button class="filter-btn">Motion</button>
     </div>
   </div>
   <div class="portfolio-grid">
-    <div class="portfolio-item p1">
-      <div class="portfolio-item-bg"></div>
-      <div class="portfolio-placeholder">3D</div>
+
+    <!-- 3D Animation featured large -->
+    <div class="portfolio-item large" data-cat="3D Animation">
+      <span class="video-badge">▶ 3D ANIMATION</span>
+      <video autoplay muted loop playsinline>
+        <source src="Mesh0001-0250.mp4" type="video/mp4">
+      </video>
       <div class="portfolio-overlay">
         <span class="p-tag">3D Animation</span>
-        <h3>Project Title Here</h3>
-        <p>Upload your 3D animation work here</p>
+        <h3>Mesh Motion Study</h3>
+        <p>3D mesh animation — Blender</p>
       </div>
     </div>
-    <div class="portfolio-item p2">
-      <div class="portfolio-item-bg"></div>
-      <div class="portfolio-placeholder">GFX</div>
-      <div class="portfolio-overlay">
-        <span class="p-tag">Graphics Design</span>
-        <h3>Project Title Here</h3>
-        <p>Upload your design work here</p>
-      </div>
-    </div>
-    <div class="portfolio-item p3">
-      <div class="portfolio-item-bg"></div>
-      <div class="portfolio-placeholder">BRD</div>
+
+    <!-- WCC Branding -->
+    <div class="portfolio-item" data-cat="Branding">
+      <img src="Artboard_6.png" alt="WCC Brand Logo">
       <div class="portfolio-overlay">
         <span class="p-tag">Branding</span>
-        <h3>Project Title Here</h3>
-        <p>Upload your branding work here</p>
+        <h3>WCC Logo Design</h3>
+        <p>Clean geometric brand identity</p>
       </div>
     </div>
-    <div class="portfolio-item p4">
-      <div class="portfolio-item-bg"></div>
-      <div class="portfolio-placeholder">3D</div>
+
+    <!-- Pictures and Bars — large -->
+    <div class="portfolio-item large" data-cat="Graphics">
+      <img src="Pictures_and_Bars.jpg" alt="Pictures and Bars Flyer">
       <div class="portfolio-overlay">
-        <span class="p-tag">3D Animation</span>
-        <h3>Project Title Here</h3>
-        <p>Upload your work here</p>
+        <span class="p-tag">Graphics Design</span>
+        <h3>Pictures & Bars</h3>
+        <p>Editorial fashion flyer — collage style</p>
       </div>
     </div>
-    <div class="portfolio-item p5">
-      <div class="portfolio-item-bg"></div>
-      <div class="portfolio-placeholder">GFX</div>
+
+    <!-- Cook Studio -->
+    <div class="portfolio-item" data-cat="Graphics">
+      <img src="Cookstudio02.jpg" alt="Cook Studio Ad Design">
       <div class="portfolio-overlay">
-        <span class="p-tag">Graphics</span>
-        <h3>Project Title Here</h3>
-        <p>Upload your design here</p>
+        <span class="p-tag">Social Media Design</span>
+        <h3>Cook Studio</h3>
+        <p>Social media ad — Cook Studio UK</p>
       </div>
     </div>
-    <div class="portfolio-item p6">
-      <div class="portfolio-item-bg"></div>
-      <div class="portfolio-placeholder">MTN</div>
-      <div class="portfolio-overlay">
-        <span class="p-tag">Motion</span>
-        <h3>Project Title Here</h3>
-        <p>Upload your motion work here</p>
-      </div>
-    </div>
+
   </div>
-  <p class="upload-note">📁 Portfolio slots ready — <span>replace placeholders with your actual designs & animations</span></p>
 </section>
 
 <!-- WEEKLY HIGHLIGHTS -->
@@ -678,21 +287,21 @@
   <div class="highlights-grid">
     <div class="highlight-card">
       <div class="highlight-week">Week 01 — March 2026</div>
-      <h3>New 3D Animation Project Completed</h3>
-      <p>Wrapped up an exciting new animation piece this week. The project pushed boundaries in lighting and texture rendering.</p>
+      <h3>Blender 3D Mesh Animation Completed</h3>
+      <p>Wrapped up a satisfying 3D mesh animation study — experimenting with motion, lighting and form in Blender.</p>
       <div class="highlight-meta"><div class="highlight-dot"></div>3D Animation</div>
     </div>
     <div class="highlight-card">
       <div class="highlight-week">Week 02 — March 2026</div>
-      <h3>Brand Identity Design Delivered</h3>
-      <p>Delivered a full brand identity package for a client — logo, color system, typography and usage guidelines.</p>
+      <h3>WCC Brand Identity Delivered</h3>
+      <p>Completed a clean geometric logo design for WCC — bold, minimal and instantly recognisable.</p>
       <div class="highlight-meta"><div class="highlight-dot"></div>Branding</div>
     </div>
     <div class="highlight-card">
       <div class="highlight-week">Week 03 — March 2026</div>
-      <h3>Community Fellowship Hosted</h3>
-      <p>Led another powerful gathering with the teenage community — a night of vision, growth and purpose-driven conversations.</p>
-      <div class="highlight-meta"><div class="highlight-dot"></div>Community</div>
+      <h3>Cook Studio Social Ad Campaign</h3>
+      <p>Designed a vibrant social media ad for Cook Studio UK — blending food photography with strong layout design.</p>
+      <div class="highlight-meta"><div class="highlight-dot"></div>Social Media Design</div>
     </div>
   </div>
 </section>
@@ -706,34 +315,22 @@
   <div class="news-list">
     <div class="news-item">
       <div class="news-num">01</div>
-      <div class="news-content">
-        <h3>AI Tools Reshaping the Creative Industry in Africa</h3>
-        <p>How African designers and animators are leveraging AI to compete on a global scale and what it means for the next generation.</p>
-      </div>
+      <div class="news-content"><h3>AI Tools Reshaping the Creative Industry in Africa</h3><p>How African designers and animators are leveraging AI to compete on a global scale.</p></div>
       <span class="news-tag-cat cat-tech">Tech</span>
     </div>
     <div class="news-item">
       <div class="news-num">02</div>
-      <div class="news-content">
-        <h3>Faith & Purpose: Building With Intention</h3>
-        <p>A reflection on how a purpose-driven life translates into meaningful creative work — and why values matter in business.</p>
-      </div>
+      <div class="news-content"><h3>Faith & Purpose: Building With Intention</h3><p>A reflection on how a purpose-driven life translates into meaningful creative work.</p></div>
       <span class="news-tag-cat cat-faith">Faith</span>
     </div>
     <div class="news-item">
       <div class="news-num">03</div>
-      <div class="news-content">
-        <h3>Nigeria's Creative Economy: The Numbers That Should Excite You</h3>
-        <p>The Nigerian creative economy is growing fast — here's what designers, animators, and digital creatives need to know.</p>
-      </div>
+      <div class="news-content"><h3>Nigeria's Creative Economy: The Numbers That Should Excite You</h3><p>The Nigerian creative economy is growing fast — here's what designers and animators need to know.</p></div>
       <span class="news-tag-cat cat-politics">Politics</span>
     </div>
     <div class="news-item">
       <div class="news-num">04</div>
-      <div class="news-content">
-        <h3>3D Animation Trends to Watch in 2026</h3>
-        <p>From real-time rendering to AI-assisted animation — the trends defining the 3D space this year and how to stay ahead.</p>
-      </div>
+      <div class="news-content"><h3>3D Animation Trends to Watch in 2026</h3><p>From real-time rendering to AI-assisted animation — the trends defining the 3D space this year.</p></div>
       <span class="news-tag-cat cat-design">Design</span>
     </div>
   </div>
@@ -745,100 +342,143 @@
     <div class="contact-info">
       <div class="section-label">Let's Talk</div>
       <h2 class="section-title">GET IN<br>TOUCH</h2>
-      <p>Have a project in mind, a collaboration to propose, or just want to connect? I'd love to hear from you. Let's create something great together.</p>
+      <p>Have a project, a collaboration, or just want to say hi? Fill the form and it goes straight to my inbox at <strong style="color:var(--pop1)">goodluckexcel610@gmail.com</strong> 📬</p>
       <div class="contact-links">
-        <a href="mailto:hello@excelgoodluck.com" class="contact-link">
-          <div class="contact-link-icon">✉</div>
-          hello@excelgoodluck.com
+        <a href="mailto:goodluckexcel610@gmail.com" class="contact-link">
+          <div class="contact-link-icon">✉</div>goodluckexcel610@gmail.com
         </a>
-        <a href="#" class="contact-link">
-          <div class="contact-link-icon">𝕏</div>
-          @Greatness on X
+        <a href="https://wa.me/2348129699004" target="_blank" class="contact-link">
+          <div class="contact-link-icon">WA</div>08129699004
         </a>
-        <a href="#" class="contact-link">
-          <div class="contact-link-icon">in</div>
-          LinkedIn Profile
+        <a href="https://www.artstation.com/excel_goodluckk" target="_blank" class="contact-link">
+          <div class="contact-link-icon">A</div>Artstation: excel_goodluckk
+        </a>
+        <a href="https://youtube.com/@excel.goodluckk" target="_blank" class="contact-link">
+          <div class="contact-link-icon">▶</div>Youtube: excel.goodluckk
         </a>
       </div>
     </div>
-    <div class="contact-form">
+
+    <!--
+      CONTACT FORM — powered by Formspree
+      SETUP STEPS:
+      1. Go to https://formspree.io and sign up free
+      2. Create a new form and set email to: goodluckexcel610@gmail.com
+      3. Copy your Form ID (looks like: xyzabcde)
+      4. Replace YOUR_FORM_ID below with your actual ID
+    -->
+    <form class="contact-form" id="contactForm">
       <div class="form-group">
         <label>Your Name</label>
-        <input type="text" placeholder="John Doe">
+        <input type="text" id="fname" placeholder="John Doe" required>
       </div>
       <div class="form-group">
         <label>Email Address</label>
-        <input type="email" placeholder="john@example.com">
+        <input type="email" id="femail" placeholder="john@example.com" required>
       </div>
       <div class="form-group">
         <label>Subject</label>
-        <input type="text" placeholder="Project Inquiry">
+        <input type="text" id="fsubject" placeholder="Project Inquiry">
       </div>
       <div class="form-group">
         <label>Message</label>
-        <textarea placeholder="Tell me about your project..."></textarea>
+        <textarea id="fmessage" placeholder="Tell me about your project..." required></textarea>
       </div>
-      <button class="btn-send">Send Message →</button>
-    </div>
+      <button type="submit" class="btn-send" id="sendBtn">Send Message →</button>
+      <div class="form-success" id="formSuccess">✅ Message sent! I'll get back to you soon.</div>
+      <div class="form-error" id="formError">❌ Something went wrong. Please try again or email me directly.</div>
+    </form>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">GREAT<span>NESS</span>✌️</div>
   <div class="footer-copy">© 2026 Excel Goodluck. All rights reserved.</div>
   <div class="footer-socials">
-    <a href="#" class="social-btn">𝕏</a>
-    <a href="#" class="social-btn">in</a>
-    <a href="#" class="social-btn">IG</a>
+    <a href="https://x.com" target="_blank" class="social-btn">𝕏</a>
+    <a href="https://www.artstation.com/excel_goodluckk" target="_blank" class="social-btn">A</a>
+    <a href="https://youtube.com/@excel.goodluckk" target="_blank" class="social-btn">▶</a>
   </div>
 </footer>
 
 <script>
-  // Custom cursor
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  function animateCursor() {
-    cursor.style.left = mx - 6 + 'px';
-    cursor.style.top = my - 6 + 'px';
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.left = rx - 18 + 'px';
-    ring.style.top = ry - 18 + 'px';
+  // Cursor
+  const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  function animateCursor(){
+    cursor.style.left=mx-6+'px';cursor.style.top=my-6+'px';
+    rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
+    ring.style.left=rx-18+'px';ring.style.top=ry-18+'px';
     requestAnimationFrame(animateCursor);
   }
   animateCursor();
-
-  document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('mouseenter', () => { cursor.style.transform = 'scale(2)'; ring.style.transform = 'scale(1.5)'; });
-    el.addEventListener('mouseleave', () => { cursor.style.transform = 'scale(1)'; ring.style.transform = 'scale(1)'; });
+  document.querySelectorAll('a,button').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cursor.style.transform='scale(2)';ring.style.transform='scale(1.5)';});
+    el.addEventListener('mouseleave',()=>{cursor.style.transform='scale(1)';ring.style.transform='scale(1)';});
   });
 
-  // Filter buttons
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  // Portfolio filter
+  document.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
+      const f=btn.textContent.trim();
+      document.querySelectorAll('.portfolio-item').forEach(item=>{
+        const cat=item.dataset.cat||'';
+        item.style.display=(f==='All'||cat===f)?'':'none';
+      });
     });
+  });
+
+  // Contact form — Formspree
+  document.getElementById('contactForm').addEventListener('submit',async function(e){
+    e.preventDefault();
+    const btn=document.getElementById('sendBtn');
+    const success=document.getElementById('formSuccess');
+    const error=document.getElementById('formError');
+    const FORM_ID='YOUR_FORM_ID'; // 👈 Replace with your Formspree ID
+
+    btn.textContent='Sending...';
+    btn.disabled=true;
+    success.style.display='none';
+    error.style.display='none';
+
+    const body={
+      name: document.getElementById('fname').value,
+      email: document.getElementById('femail').value,
+      subject: document.getElementById('fsubject').value,
+      message: document.getElementById('fmessage').value
+    };
+
+    try{
+      const res=await fetch(`https://formspree.io/f/${FORM_ID}`,{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify(body)
+      });
+      if(res.ok){
+        success.style.display='block';
+        document.getElementById('contactForm').reset();
+        btn.textContent='Sent ✓';
+      } else { throw new Error(); }
+    } catch{
+      error.style.display='block';
+      btn.textContent='Send Message →';
+      btn.disabled=false;
+    }
   });
 
   // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}
     });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.highlight-card, .news-item, .portfolio-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
+  },{threshold:0.1});
+  document.querySelectorAll('.highlight-card,.news-item,.portfolio-item').forEach(el=>{
+    el.style.opacity='0';el.style.transform='translateY(20px)';
+    el.style.transition='opacity .5s ease,transform .5s ease';
+    obs.observe(el);
   });
 </script>
 </body>
