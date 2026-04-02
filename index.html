@@ -149,7 +149,100 @@
     .portfolio-item.large{grid-column:span 2;}
     .highlights-grid{grid-template-columns:1fr;}
     footer{flex-direction:column;gap:1rem;text-align:center;}
+    .masonry-grid{columns:1;}
+    .gallery-filters{gap:.5rem;}
   }
+
+  /* ── GALLERY ── */
+  #gallery{background:var(--black);}
+  .gallery-inner{max-width:1100px;margin:0 auto;}
+  .gallery-filters{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+  .gfilter-btn{
+    font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;
+    letter-spacing:.12em;text-transform:uppercase;
+    padding:.5rem 1.2rem;border:1.5px solid #333;
+    background:transparent;color:#666;cursor:pointer;transition:all .2s;
+  }
+  .gfilter-btn.active,.gfilter-btn:hover{border-color:var(--pop1);color:var(--pop1);}
+
+  /* Masonry layout */
+  .masonry-grid{
+    columns:3;column-gap:6px;
+  }
+  .masonry-item{
+    break-inside:avoid;margin-bottom:6px;
+    position:relative;overflow:hidden;cursor:pointer;
+    display:block;
+  }
+  .masonry-item img{
+    width:100%;display:block;
+    transition:transform .5s ease;
+    border:none;outline:none;
+  }
+  .masonry-item:hover img{transform:scale(1.05);}
+  .masonry-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 50%);
+    opacity:0;transition:opacity .3s;
+    display:flex;flex-direction:column;
+    justify-content:flex-end;padding:1.2rem;
+  }
+  .masonry-item:hover .masonry-overlay{opacity:1;}
+  .masonry-overlay .m-cat{
+    font-family:'Syne',sans-serif;font-size:.62rem;font-weight:700;
+    letter-spacing:.18em;text-transform:uppercase;
+    color:var(--pop1);margin-bottom:.3rem;
+  }
+  .masonry-overlay .m-title{
+    font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;
+  }
+  .masonry-overlay .m-desc{font-size:.75rem;color:#aaa;margin-top:.2rem;}
+
+  /* Lightbox */
+  .lightbox{
+    position:fixed;inset:0;z-index:9999;
+    background:rgba(0,0,0,.95);
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;pointer-events:none;transition:opacity .3s;
+  }
+  .lightbox.open{opacity:1;pointer-events:all;}
+  .lightbox-img{
+    max-width:88vw;max-height:88vh;
+    object-fit:contain;border:1px solid #333;
+  }
+  .lightbox-close{
+    position:absolute;top:1.5rem;right:1.5rem;
+    width:44px;height:44px;border:1.5px solid #444;
+    background:transparent;color:#fff;font-size:1.3rem;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;
+    transition:all .2s;
+  }
+  .lightbox-close:hover{border-color:var(--pop1);color:var(--pop1);}
+  .lightbox-caption{
+    position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+    text-align:center;
+  }
+  .lightbox-caption strong{
+    font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;
+    display:block;margin-bottom:.3rem;
+  }
+  .lightbox-caption span{font-size:.8rem;color:#777;}
+  .lightbox-nav{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:44px;height:44px;border:1.5px solid #333;
+    background:rgba(0,0,0,.6);color:#fff;font-size:1.2rem;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;
+    transition:all .2s;
+  }
+  .lightbox-nav:hover{border-color:var(--pop1);color:var(--pop1);}
+  .lightbox-prev{left:1.5rem;}
+  .lightbox-next{right:1.5rem;}
+  .gallery-count{
+    font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;
+    letter-spacing:.2em;color:#444;margin-bottom:1.5rem;
+    text-transform:uppercase;
+  }
+  .gallery-count span{color:var(--pop1);}
 </style>
 </head>
 <body>
@@ -162,6 +255,7 @@
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#gallery">Gallery</a></li>
     <li><a href="#highlights">Highlights</a></li>
     <li><a href="#news">News</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -257,7 +351,7 @@
 
     <!-- Pictures and Bars — large -->
     <div class="portfolio-item large" data-cat="Graphics">
-      <img src="Veal flyer.jpg" alt="Veal Fashion Advertisement Flyer">
+      <img src="Pictures_and_Bars.jpg" alt="Pictures and Bars Flyer">
       <div class="portfolio-overlay">
         <span class="p-tag">Graphics Design</span>
         <h3>Pictures & Bars</h3>
@@ -277,6 +371,162 @@
 
   </div>
 </section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-inner">
+    <div class="section-label">All Works</div>
+    <h2 class="section-title">GALLERY</h2>
+    <div class="gallery-count">Showing <span id="galleryCount">12</span> works</div>
+
+    <!-- Filter buttons -->
+    <div class="gallery-filters">
+      <button class="gfilter-btn active" data-gfilter="All">All</button>
+      <button class="gfilter-btn" data-gfilter="Graphics">Graphics</button>
+      <button class="gfilter-btn" data-gfilter="Branding">Branding</button>
+      <button class="gfilter-btn" data-gfilter="3D Animation">3D Animation</button>
+      <button class="gfilter-btn" data-gfilter="Social Media">Social Media</button>
+    </div>
+
+    <!-- Masonry Grid -->
+    <div class="masonry-grid" id="masonryGrid">
+
+      <!-- 1 — ERDD Recruitment -->
+      <div class="masonry-item" data-gcat="Graphics" data-title="ERDD Recruitment Flier" data-desc="RCCG National Teens Affairs — recruitment campaign flier">
+        <img src="ERDD_RECRUITMENT_FLIER.jpg" alt="ERDD Recruitment Flier">
+        <div class="masonry-overlay">
+          <div class="m-cat">Graphics</div>
+          <div class="m-title">ERDD Recruitment Flier</div>
+          <div class="m-desc">RCCG recruitment campaign</div>
+        </div>
+      </div>
+
+      <!-- 2 — ERDD April -->
+      <div class="masonry-item" data-gcat="Graphics" data-title="Welcome to April — ERDD" data-desc="Monthly editorial graphic for RCCG ERDD">
+        <img src="ERDD_APRIL.jpg" alt="ERDD April">
+        <div class="masonry-overlay">
+          <div class="m-cat">Graphics</div>
+          <div class="m-title">Welcome to April</div>
+          <div class="m-desc">Monthly editorial — RCCG ERDD</div>
+        </div>
+      </div>
+
+      <!-- 3 — Divi Carousel 1 -->
+      <div class="masonry-item" data-gcat="Social Media" data-title="Divi — How to Brand Your Product" data-desc="Social media carousel post for Divi Agency">
+        <img src="Divi_carousel_1.jpg" alt="Divi Carousel 1">
+        <div class="masonry-overlay">
+          <div class="m-cat">Social Media</div>
+          <div class="m-title">How to Brand Your Product</div>
+          <div class="m-desc">Carousel post — Divi Agency</div>
+        </div>
+      </div>
+
+      <!-- 4 — Divi Carousel 2 -->
+      <div class="masonry-item" data-gcat="Social Media" data-title="Divi — Why Premium is Luxury" data-desc="Social media carousel post for Divi Agency">
+        <img src="Divi_carousel_2.jpg" alt="Divi Carousel 2">
+        <div class="masonry-overlay">
+          <div class="m-cat">Social Media</div>
+          <div class="m-title">Why Premium is Luxury</div>
+          <div class="m-desc">Carousel post — Divi Agency</div>
+        </div>
+      </div>
+
+      <!-- 5 — Divi SMA -->
+      <div class="masonry-item" data-gcat="Social Media" data-title="Divi Digital Toolkit" data-desc="Social media ad promoting Divi's business toolkit">
+        <img src="Divi-SMA_01.jpg" alt="Divi SMA">
+        <div class="masonry-overlay">
+          <div class="m-cat">Social Media</div>
+          <div class="m-title">Divi Digital Toolkit</div>
+          <div class="m-desc">Business toolkit promo — Divi</div>
+        </div>
+      </div>
+
+      <!-- 6 — Veal Fashion -->
+      <div class="masonry-item" data-gcat="Graphics" data-title="Veal Fashion Flyer" data-desc="Brand flyer design for Veal Fashion clothing brand">
+        <img src="Veal_flyer.jpg" alt="Veal Fashion Flyer">
+        <div class="masonry-overlay">
+          <div class="m-cat">Graphics</div>
+          <div class="m-title">Veal Fashion Flyer</div>
+          <div class="m-desc">Brand flyer — Veal Fashion</div>
+        </div>
+      </div>
+
+      <!-- 7 — Cook Studio Menu -->
+      <div class="masonry-item" data-gcat="Social Media" data-title="Cook Studio — Menu Design" data-desc="Food menu social media graphic for Cook Studio UK">
+        <img src="Cookstudio01-01.jpg" alt="Cook Studio Menu">
+        <div class="masonry-overlay">
+          <div class="m-cat">Social Media</div>
+          <div class="m-title">Cook Studio Menu</div>
+          <div class="m-desc">Food menu graphic — Cook Studio UK</div>
+        </div>
+      </div>
+
+      <!-- 8 — Cook Studio Ad -->
+      <div class="masonry-item" data-gcat="Social Media" data-title="Cook Studio — Nigerian Flavors" data-desc="Social media ad design for Cook Studio UK">
+        <img src="Cookstudio02.jpg" alt="Cook Studio Ad">
+        <div class="masonry-overlay">
+          <div class="m-cat">Social Media</div>
+          <div class="m-title">Delicious Nigerian Flavors</div>
+          <div class="m-desc">Social media ad — Cook Studio UK</div>
+        </div>
+      </div>
+
+      <!-- 9 — NSChE League -->
+      <div class="masonry-item" data-gcat="Graphics" data-title="NSChE League" data-desc="Sports event flier for NSChE University of Ilorin Students' Chapter">
+        <img src="NSChE_League.jpg" alt="NSChE League">
+        <div class="masonry-overlay">
+          <div class="m-cat">Graphics</div>
+          <div class="m-title">NSChE League</div>
+          <div class="m-desc">Sports event flier — Unilorin</div>
+        </div>
+      </div>
+
+      <!-- 10 — NSChE Freshers -->
+      <div class="masonry-item" data-gcat="Graphics" data-title="NSChE Freshers Orientation 2025" data-desc="Orientation event flier for NSChE Unilorin Student Chapter">
+        <img src="NSChE_Fresher_s_Ori.jpg" alt="NSChE Freshers Orientation">
+        <div class="masonry-overlay">
+          <div class="m-cat">Graphics</div>
+          <div class="m-title">Freshers Orientation 2025</div>
+          <div class="m-desc">Event flier — NSChE Unilorin</div>
+        </div>
+      </div>
+
+      <!-- 11 — Pictures & Bars -->
+      <div class="masonry-item" data-gcat="Graphics" data-title="Pictures & Bars" data-desc="Editorial fashion flyer — collage style">
+        <img src="Pictures_and_Bars.jpg" alt="Pictures and Bars">
+        <div class="masonry-overlay">
+          <div class="m-cat">Graphics</div>
+          <div class="m-title">Pictures & Bars</div>
+          <div class="m-desc">Editorial fashion flyer</div>
+        </div>
+      </div>
+
+      <!-- 12 — WCC Logo -->
+      <div class="masonry-item" data-gcat="Branding" data-title="WCC Logo Design" data-desc="Clean geometric brand identity for WCC">
+        <img src="Artboard_6.png" alt="WCC Logo" style="background:#fff;">
+        <div class="masonry-overlay">
+          <div class="m-cat">Branding</div>
+          <div class="m-title">WCC Logo Design</div>
+          <div class="m-desc">Geometric brand identity</div>
+        </div>
+      </div>
+
+    </div>
+    <!-- Add more images here as you grow your portfolio -->
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
+  <div class="lightbox-caption">
+    <strong id="lightboxTitle"></strong>
+    <span id="lightboxDesc"></span>
+  </div>
+</div>
 
 <!-- WEEKLY HIGHLIGHTS -->
 <section id="highlights">
@@ -342,10 +592,10 @@
     <div class="contact-info">
       <div class="section-label">Let's Talk</div>
       <h2 class="section-title">GET IN<br>TOUCH</h2>
-      <p>Have a project, a collaboration, or just want to say hi? Fill the form and it goes straight to my inbox at <strong style="color:var(--pop1)">goodluckexcel610@gmail.com</strong> 📬</p>
+      <p>Have a project, a collaboration, or just want to say hi? Fill the form and it goes straight to my inbox at <strong style="color:var(--pop1)"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="680f07070c041d0b030d100b0d045e5958280f05090104460b0705">[email&#160;protected]</a></strong> 📬</p>
       <div class="contact-links">
-        <a href="mailto:goodluckexcel610@gmail.com" class="contact-link">
-          <div class="contact-link-icon">✉</div>goodluckexcel610@gmail.com
+        <a href="/cdn-cgi/l/email-protection#2e4941414a425b4d454b564d4b42181f1e6e49434f4742004d4143" class="contact-link">
+          <div class="contact-link-icon">✉</div><span class="__cf_email__" data-cfemail="fc9b93939890899f9799849f9990cacdccbc9b919d9590d29f9391">[email&#160;protected]</span>
         </a>
         <a href="https://wa.me/2348129699004" target="_blank" class="contact-link">
           <div class="contact-link-icon">WA</div>08129699004
@@ -401,7 +651,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Cursor
   const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
   let mx=0,my=0,rx=0,ry=0;
@@ -475,11 +725,101 @@
       if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}
     });
   },{threshold:0.1});
-  document.querySelectorAll('.highlight-card,.news-item,.portfolio-item').forEach(el=>{
+  document.querySelectorAll('.highlight-card,.news-item,.portfolio-item,.masonry-item').forEach(el=>{
     el.style.opacity='0';el.style.transform='translateY(20px)';
     el.style.transition='opacity .5s ease,transform .5s ease';
     obs.observe(el);
   });
+
+  // ── GALLERY FILTER ──
+  const gItems = document.querySelectorAll('.masonry-item');
+  const gCount = document.getElementById('galleryCount');
+
+  document.querySelectorAll('.gfilter-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.gfilter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.gfilter;
+      let visible = 0;
+      gItems.forEach(item=>{
+        const cat = item.dataset.gcat || '';
+        const show = f === 'All' || cat === f;
+        item.style.opacity = show ? '1' : '0';
+        item.style.transform = show ? 'scale(1)' : 'scale(0.95)';
+        item.style.transition = 'opacity .35s ease, transform .35s ease';
+        item.style.display = show ? 'block' : 'none';
+        if(show) visible++;
+      });
+      if(gCount) gCount.textContent = visible;
+    });
+  });
+
+  // ── LIGHTBOX ──
+  const lightbox   = document.getElementById('lightbox');
+  const lbImg      = document.getElementById('lightboxImg');
+  const lbTitle    = document.getElementById('lightboxTitle');
+  const lbDesc     = document.getElementById('lightboxDesc');
+  const lbClose    = document.getElementById('lightboxClose');
+  const lbPrev     = document.getElementById('lightboxPrev');
+  const lbNext     = document.getElementById('lightboxNext');
+
+  let lbItems = [];  // visible items
+  let lbIndex = 0;
+
+  function openLightbox(idx) {
+    lbItems = [...document.querySelectorAll('.masonry-item')]
+      .filter(i => i.style.display !== 'none');
+    lbIndex = idx;
+    showLbItem();
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function showLbItem() {
+    const item = lbItems[lbIndex];
+    if(!item) return;
+    const img = item.querySelector('img');
+    lbImg.src = img ? img.src : '';
+    lbTitle.textContent = item.dataset.title || '';
+    lbDesc.textContent  = item.dataset.desc  || '';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  gItems.forEach((item, i) => {
+    item.addEventListener('click', () => {
+      const visibleItems = [...document.querySelectorAll('.masonry-item')]
+        .filter(it => it.style.display !== 'none');
+      const idx = visibleItems.indexOf(item);
+      openLightbox(idx >= 0 ? idx : 0);
+    });
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if(e.target === lightbox) closeLightbox(); });
+
+  lbNext.addEventListener('click', e => {
+    e.stopPropagation();
+    lbIndex = (lbIndex + 1) % lbItems.length;
+    showLbItem();
+  });
+  lbPrev.addEventListener('click', e => {
+    e.stopPropagation();
+    lbIndex = (lbIndex - 1 + lbItems.length) % lbItems.length;
+    showLbItem();
+  });
+
+  // Keyboard nav
+  document.addEventListener('keydown', e => {
+    if(!lightbox.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLightbox();
+    if(e.key === 'ArrowRight') { lbIndex=(lbIndex+1)%lbItems.length; showLbItem(); }
+    if(e.key === 'ArrowLeft')  { lbIndex=(lbIndex-1+lbItems.length)%lbItems.length; showLbItem(); }
+  });
+
 </script>
 </body>
 </html>
