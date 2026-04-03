@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Excel Goodluck — Graphics Designer and 3D Animator portfolio">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <title>Greatness✌️ — Excel Goodluck</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 <style>
@@ -168,6 +171,8 @@
   /* Masonry layout */
   .masonry-grid{
     columns:3;column-gap:6px;
+    content-visibility:auto;
+    contain-intrinsic-size: 1px 3000px;
   }
   .masonry-item{
     break-inside:avoid;margin-bottom:6px;
@@ -178,6 +183,7 @@
     width:100%;display:block;
     transition:transform .5s ease;
     border:none;outline:none;
+    height:auto;
   }
   .masonry-item:hover img{transform:scale(1.05);}
   .masonry-overlay{
@@ -272,7 +278,7 @@
     <p class="hero-sub"><strong>Graphics Designer & 3D Animator</strong> — crafting bold visuals that speak, move, and inspire. Driven by <strong>faith</strong>, fueled by <strong>tech</strong>, shaped by <strong>purpose</strong>.</p>
     <div class="hero-cta">
       <a href="#portfolio" class="btn-primary">View My Work</a>
-      <a href="Excel_Goodluck_Resume_v3.pdf" download class="btn-resume">↓ Download Resume</a>
+      <a href="Excel Goodluck Resume v3.pdf" download class="btn-resume">↓ Download Resume</a>
       <a href="#contact" class="btn-outline">Get In Touch</a>
     </div>
     <div class="hero-stats">
@@ -282,7 +288,7 @@
     </div>
   </div>
   <div class="hero-profile">
-    <img src="IMG-20260309-WA0000.jpg" alt="Excel Goodluck — Greatness">
+    <img src="IMG-20260309-WA0000.jpg" loading="eager" decoding="async" fetchpriority="high" alt="Excel Goodluck — Greatness">
   </div>
 </section>
 
@@ -290,7 +296,7 @@
 <section id="about">
   <div class="about-grid">
     <div class="about-photo">
-      <img src="IMG-20260309-WA0000.jpg" alt="Excel Goodluck">
+      <img src="IMG-20260309-WA0000.jpg" loading="eager" decoding="async" fetchpriority="high" alt="Excel Goodluck">
       <div class="about-accent">GREAT<br>NESS<br>✌️</div>
     </div>
     <div class="about-text">
@@ -329,7 +335,7 @@
     <!-- 3D Animation featured large -->
     <div class="portfolio-item large" data-cat="3D Animation">
       <span class="video-badge">▶ 3D ANIMATION</span>
-      <video autoplay muted loop playsinline>
+      <video autoplay muted loop playsinline preload="metadata" poster="Artboard 1.jpg">
         <source src="Mesh0001-0250.mp4" type="video/mp4">
       </video>
       <div class="portfolio-overlay">
@@ -341,7 +347,7 @@
 
     <!-- WCC Branding -->
     <div class="portfolio-item" data-cat="Branding">
-      <img src="Artboard_6.png" alt="WCC Brand Logo">
+      <img src="Artboard_6.png" loading="lazy" decoding="async" alt="WCC Brand Logo">
       <div class="portfolio-overlay">
         <span class="p-tag">Branding</span>
         <h3>WCC Logo Design</h3>
@@ -351,7 +357,7 @@
 
     <!-- Pictures and Bars — large -->
     <div class="portfolio-item large" data-cat="Graphics">
-      <img src="Pictures_and_Bars.jpg" alt="Pictures and Bars Flyer">
+      <img src="Pictures_and_Bars.jpg" loading="lazy" decoding="async" alt="Pictures and Bars Flyer">
       <div class="portfolio-overlay">
         <span class="p-tag">Graphics Design</span>
         <h3>Pictures & Bars</h3>
@@ -361,7 +367,7 @@
 
     <!-- Cook Studio -->
     <div class="portfolio-item" data-cat="Graphics">
-      <img src="Cookstudio02.jpg" alt="Cook Studio Ad Design">
+      <img src="Cookstudio02.jpg" loading="lazy" decoding="async" alt="Cook Studio Ad Design">
       <div class="portfolio-overlay">
         <span class="p-tag">Social Media Design</span>
         <h3>Cook Studio</h3>
@@ -377,7 +383,7 @@
   <div class="gallery-inner">
     <div class="section-label">All Works</div>
     <h2 class="section-title">GALLERY</h2>
-    <div class="gallery-count">Showing <span id="galleryCount">22</span> works</div>
+    <div class="gallery-count">Showing <span id="galleryCount">22</span> works</div><p style="color:#666;margin:-.7rem 0 1.5rem;font-size:.9rem;">Optimized with lazy-loading and metadata-first video loading to improve gallery speed.</p>
 
     <!-- Filter buttons -->
     <div class="gallery-filters">
@@ -394,121 +400,121 @@
 
       <!-- 1 — ERDD Recruitment -->
       <div class="masonry-item" data-gcat="Graphics" data-title="ERDD Recruitment Flier" data-desc="RCCG National Teens Affairs recruitment campaign">
-        <img src="ERDD_RECRUITMENT_FLIER.jpg" alt="ERDD Recruitment Flier">
+        <img src="ERDD_RECRUITMENT_FLIER.jpg" loading="lazy" decoding="async" alt="ERDD Recruitment Flier">
         <div class="masonry-overlay"><div class="m-cat">Graphics</div><div class="m-title">ERDD Recruitment Flier</div><div class="m-desc">RCCG recruitment campaign</div></div>
       </div>
 
       <!-- 2 — ERDD April -->
       <div class="masonry-item" data-gcat="Graphics" data-title="Welcome to April — ERDD" data-desc="Monthly editorial graphic for RCCG ERDD">
-        <img src="ERDD_APRIL.jpg" alt="ERDD April">
+        <img src="ERDD_APRIL.jpg" loading="lazy" decoding="async" alt="ERDD April">
         <div class="masonry-overlay"><div class="m-cat">Graphics</div><div class="m-title">Welcome to April</div><div class="m-desc">Monthly editorial — RCCG ERDD</div></div>
       </div>
 
       <!-- 3 — ERDD Good Friday -->
       <div class="masonry-item" data-gcat="Graphics" data-title="ERDD Good Friday" data-desc="Good Friday themed graphic design for RCCG ERDD">
-        <img src="ERDD_GOODFRIDAY_26.jpg" alt="ERDD Good Friday">
+        <img src="ERDD_GOODFRIDAY_26.jpg" loading="lazy" decoding="async" alt="ERDD Good Friday">
         <div class="masonry-overlay"><div class="m-cat">Graphics</div><div class="m-title">ERDD Good Friday</div><div class="m-desc">Good Friday graphic — RCCG ERDD</div></div>
       </div>
 
       <!-- 4 — ERDD Day 3 -->
       <div class="masonry-item" data-gcat="Graphics" data-title="ERDD Day 3" data-desc="Event day 3 graphic design for RCCG ERDD">
-        <img src="ERDD DAY 3-FINAL.jpg" alt="ERDD Day 3">
+        <img src="ERDD DAY 3-FINAL.jpg" loading="lazy" decoding="async" alt="ERDD Day 3">
         <div class="masonry-overlay"><div class="m-cat">Graphics</div><div class="m-title">ERDD Day 3</div><div class="m-desc">Event graphic — RCCG ERDD</div></div>
       </div>
 
       <!-- 5 — Divi Carousel 1 -->
       <div class="masonry-item" data-gcat="Social Media" data-title="Divi — How to Brand Your Product" data-desc="Social media carousel post for Divi Agency">
-        <img src="Divi_carousel_1.jpg" alt="Divi Carousel 1">
+        <img src="Divi_carousel_1.jpg" loading="lazy" decoding="async" alt="Divi Carousel 1">
         <div class="masonry-overlay"><div class="m-cat">Social Media</div><div class="m-title">How to Brand Your Product</div><div class="m-desc">Carousel post — Divi Agency</div></div>
       </div>
 
       <!-- 6 — Divi Carousel 2 -->
       <div class="masonry-item" data-gcat="Social Media" data-title="Divi — Why Premium is Luxury" data-desc="Social media carousel post for Divi Agency">
-        <img src="Divi_carousel_2.jpg" alt="Divi Carousel 2">
+        <img src="Divi_carousel_2.jpg" loading="lazy" decoding="async" alt="Divi Carousel 2">
         <div class="masonry-overlay"><div class="m-cat">Social Media</div><div class="m-title">Why Premium is Luxury</div><div class="m-desc">Carousel post — Divi Agency</div></div>
       </div>
 
       <!-- 7 — Divi SMA 01 -->
       <div class="masonry-item" data-gcat="Social Media" data-title="Divi Digital Toolkit" data-desc="Business toolkit promo graphic for Divi Agency">
-        <img src="Divi-SMA_01.jpg" alt="Divi SMA 01">
+        <img src="Divi-SMA_01.jpg" loading="lazy" decoding="async" alt="Divi SMA 01">
         <div class="masonry-overlay"><div class="m-cat">Social Media</div><div class="m-title">Divi Digital Toolkit</div><div class="m-desc">Business toolkit promo — Divi</div></div>
       </div>
 
       <!-- 8 — Divi SMA 02 -->
       <div class="masonry-item" data-gcat="Social Media" data-title="Divi Social Post 02" data-desc="Social media design for Divi Agency">
-        <img src="Divi-SMA_02.jpg" alt="Divi SMA 02">
+        <img src="Divi-SMA_02.jpg" loading="lazy" decoding="async" alt="Divi SMA 02">
         <div class="masonry-overlay"><div class="m-cat">Social Media</div><div class="m-title">Divi Social Post 02</div><div class="m-desc">Social media design — Divi</div></div>
       </div>
 
       <!-- 9 — Divi SMA 03 -->
       <div class="masonry-item" data-gcat="Social Media" data-title="Divi Social Post 03" data-desc="Social media design for Divi Agency">
-        <img src="Divi-SMA_03.jpg" alt="Divi SMA 03">
+        <img src="Divi-SMA_03.jpg" loading="lazy" decoding="async" alt="Divi SMA 03">
         <div class="masonry-overlay"><div class="m-cat">Social Media</div><div class="m-title">Divi Social Post 03</div><div class="m-desc">Social media design — Divi</div></div>
       </div>
 
       <!-- 10 — Divi SMA 04 -->
       <div class="masonry-item" data-gcat="Social Media" data-title="Divi Social Post 04" data-desc="Social media design for Divi Agency">
-        <img src="Divi-SMA_04.jpg" alt="Divi SMA 04">
+        <img src="Divi-SMA_04.jpg" loading="lazy" decoding="async" alt="Divi SMA 04">
         <div class="masonry-overlay"><div class="m-cat">Social Media</div><div class="m-title">Divi Social Post 04</div><div class="m-desc">Social media design — Divi</div></div>
       </div>
 
       <!-- 11 — Veal Fashion -->
       <div class="masonry-item" data-gcat="Graphics" data-title="Veal Fashion Flyer" data-desc="Brand flyer design for Veal Fashion clothing brand">
-        <img src="Veal_flyer.jpg" alt="Veal Fashion Flyer">
+        <img src="Veal_flyer.jpg" loading="lazy" decoding="async" alt="Veal Fashion Flyer">
         <div class="masonry-overlay"><div class="m-cat">Graphics</div><div class="m-title">Veal Fashion Flyer</div><div class="m-desc">Brand flyer — Veal Fashion</div></div>
       </div>
 
       <!-- 12 — Cook Studio Menu -->
       <div class="masonry-item" data-gcat="Social Media" data-title="Cook Studio — Menu Design" data-desc="Food menu social media graphic for Cook Studio UK">
-        <img src="Cookstudio01-01.jpg" alt="Cook Studio Menu">
+        <img src="Cookstudio01-01.jpg" loading="lazy" decoding="async" alt="Cook Studio Menu">
         <div class="masonry-overlay"><div class="m-cat">Social Media</div><div class="m-title">Cook Studio Menu</div><div class="m-desc">Food menu graphic — Cook Studio UK</div></div>
       </div>
 
       <!-- 13 — Cook Studio Ad -->
       <div class="masonry-item" data-gcat="Social Media" data-title="Cook Studio — Nigerian Flavors" data-desc="Social media ad design for Cook Studio UK">
-        <img src="Cookstudio02.jpg" alt="Cook Studio Ad">
+        <img src="Cookstudio02.jpg" loading="lazy" decoding="async" alt="Cook Studio Ad">
         <div class="masonry-overlay"><div class="m-cat">Social Media</div><div class="m-title">Delicious Nigerian Flavors</div><div class="m-desc">Social media ad — Cook Studio UK</div></div>
       </div>
 
       <!-- 14 — NSChE League -->
       <div class="masonry-item" data-gcat="Graphics" data-title="NSChE League" data-desc="Sports event flier for NSChE University of Ilorin Students' Chapter">
-        <img src="NSChE_League.jpg" alt="NSChE League">
+        <img src="NSChE_League.jpg" loading="lazy" decoding="async" alt="NSChE League">
         <div class="masonry-overlay"><div class="m-cat">Graphics</div><div class="m-title">NSChE League</div><div class="m-desc">Sports event flier — Unilorin</div></div>
       </div>
 
       <!-- 15 — NSChE Freshers -->
       <div class="masonry-item" data-gcat="Graphics" data-title="NSChE Freshers Orientation 2025" data-desc="Orientation event flier for NSChE Unilorin Student Chapter">
-        <img src="NSChE_Fresher_s_Ori.jpg" alt="NSChE Freshers Orientation">
+        <img src="NSChE_Fresher_s_Ori.jpg" loading="lazy" decoding="async" alt="NSChE Freshers Orientation">
         <div class="masonry-overlay"><div class="m-cat">Graphics</div><div class="m-title">Freshers Orientation 2025</div><div class="m-desc">Event flier — NSChE Unilorin</div></div>
       </div>
 
       <!-- 16 — Pictures & Bars -->
       <div class="masonry-item" data-gcat="Graphics" data-title="Pictures & Bars" data-desc="Editorial fashion flyer — collage style">
-        <img src="Pictures_and_Bars.jpg" alt="Pictures and Bars">
+        <img src="Pictures_and_Bars.jpg" loading="lazy" decoding="async" alt="Pictures and Bars">
         <div class="masonry-overlay"><div class="m-cat">Graphics</div><div class="m-title">Pictures & Bars</div><div class="m-desc">Editorial fashion flyer</div></div>
       </div>
 
       <!-- 17 — WCC Logo -->
       <div class="masonry-item" data-gcat="Branding" data-title="WCC Logo Design" data-desc="Clean geometric brand identity for WCC">
-        <img src="Artboard_6.png" alt="WCC Logo" style="background:#fff;">
+        <img src="Artboard_6.png" loading="lazy" decoding="async" alt="WCC Logo" style="background:#fff;">
         <div class="masonry-overlay"><div class="m-cat">Branding</div><div class="m-title">WCC Logo Design</div><div class="m-desc">Geometric brand identity</div></div>
       </div>
 
       <!-- 18 — Artboard 1 -->
       <div class="masonry-item" data-gcat="Branding" data-title="Brand Design — Artboard 1" data-desc="Brand identity design work">
-        <img src="Artboard 1.jpg" alt="Artboard 1">
+        <img src="Artboard 1.jpg" loading="lazy" decoding="async" alt="Artboard 1">
         <div class="masonry-overlay"><div class="m-cat">Branding</div><div class="m-title">Brand Design 01</div><div class="m-desc">Brand identity design</div></div>
       </div>
 
       <!-- 19 — Artboard 3 -->
       <div class="masonry-item" data-gcat="Branding" data-title="Brand Design — Artboard 3" data-desc="Brand identity design work">
-        <img src="Artboard 3.png" alt="Artboard 3">
+        <img src="Artboard 3.png" loading="lazy" decoding="async" alt="Artboard 3">
         <div class="masonry-overlay"><div class="m-cat">Branding</div><div class="m-title">Brand Design 03</div><div class="m-desc">Brand identity design</div></div>
       </div>
 
       <!-- 20 — 3D Mesh Animation -->
       <div class="masonry-item" data-gcat="3D Animation" data-title="Mesh Motion Study" data-desc="3D mesh animation — Blender">
-        <video autoplay muted loop playsinline style="min-height:280px;object-fit:cover;">
+        <video autoplay muted loop playsinline preload="metadata" poster="Artboard 1.jpg" style="min-height:280px;object-fit:cover;">
           <source src="Mesh0001-0250.mp4" type="video/mp4">
         </video>
         <div class="masonry-overlay"><div class="m-cat">3D Animation</div><div class="m-title">Mesh Motion Study</div><div class="m-desc">3D animation — Blender</div></div>
@@ -516,7 +522,7 @@
 
       <!-- 21 — Shoe Promo Motion -->
       <div class="masonry-item" data-gcat="Motion" data-title="Shoe Promo Animation" data-desc="Product promotional motion video">
-        <video autoplay muted loop playsinline style="min-height:280px;object-fit:cover;">
+        <video autoplay muted loop playsinline preload="metadata" poster="Artboard 1.jpg" style="min-height:280px;object-fit:cover;">
           <source src="SHOE_PROMO_ORI.mp4" type="video/mp4">
         </video>
         <div class="masonry-overlay"><div class="m-cat">Motion</div><div class="m-title">Shoe Promo Animation</div><div class="m-desc">Product promo motion video</div></div>
@@ -524,12 +530,43 @@
 
       <!-- 22 — Profile / Brand Photo -->
       <div class="masonry-item" data-gcat="Graphics" data-title="Brand Portrait" data-desc="Personal brand photography — Excel Goodluck">
-        <img src="IMG-20260309-WA0000.jpg" alt="Excel Goodluck">
+        <img src="IMG-20260309-WA0000.jpg" loading="eager" decoding="async" fetchpriority="high" alt="Excel Goodluck">
         <div class="masonry-overlay"><div class="m-cat">Photography</div><div class="m-title">Brand Portrait</div><div class="m-desc">Personal brand photography</div></div>
       </div>
 
     </div>
     <!-- Add more images here as you grow your portfolio -->
+    <div style="margin-top:2rem;padding:1rem 1.2rem;border:1px solid #2a2a2a;color:#888;font-size:.9rem;line-height:1.7;">
+      <strong style="color:var(--white);display:block;margin-bottom:.5rem;">How to add more works later</strong>
+      Duplicate any <code>.masonry-item</code> block inside the gallery and change:
+      <code>data-gcat</code>, <code>data-title</code>, <code>data-desc</code>, image/video file, and alt text.
+      The filter and lightbox will keep working automatically.
+    </div>
+
+    <!-- TEMPLATE: duplicate this block to add more image works
+    <div class="masonry-item" data-gcat="Graphics" data-title="Project Title" data-desc="Short project description">
+      <img src="your-image.jpg" alt="Project Title" loading="lazy" decoding="async">
+      <div class="masonry-overlay">
+        <div class="m-cat">Graphics</div>
+        <div class="m-title">Project Title</div>
+        <div class="m-desc">Short project description</div>
+      </div>
+    </div>
+    -->
+
+    <!-- TEMPLATE: duplicate this block to add more video works
+    <div class="masonry-item" data-gcat="Motion" data-title="Project Title" data-desc="Short project description">
+      <video autoplay muted loop playsinline preload="metadata" poster="Artboard 1.jpg" style="min-height:280px;object-fit:cover;">
+        <source src="your-video.mp4" type="video/mp4">
+      </video>
+      <div class="masonry-overlay">
+        <div class="m-cat">Motion</div>
+        <div class="m-title">Project Title</div>
+        <div class="m-desc">Short project description</div>
+      </div>
+    </div>
+    -->
+
   </div>
 </section>
 
@@ -800,7 +837,16 @@
     const item = lbItems[lbIndex];
     if(!item) return;
     const img = item.querySelector('img');
-    lbImg.src = img ? img.src : '';
+    const video = item.querySelector('video source');
+    if (img) {
+      lbImg.src = img.src;
+      lbImg.style.display = 'block';
+    } else if (video) {
+      lbImg.src = video.src;
+      lbImg.style.display = 'block';
+    } else {
+      lbImg.src = '';
+    }
     lbTitle.textContent = item.dataset.title || '';
     lbDesc.textContent  = item.dataset.desc  || '';
   }
