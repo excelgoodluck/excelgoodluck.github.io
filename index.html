@@ -253,6 +253,19 @@
     text-transform:uppercase;
   }
   .gallery-count span{color:var(--pop1);}
+
+
+  @media (max-width:768px){
+    .portfolio-grid{grid-template-columns:1fr;}
+    .portfolio-item.large{grid-column:span 1;height:240px;}
+    .lightbox-nav{width:38px;height:38px;font-size:1rem;}
+    .lightbox-prev{left:.75rem;}
+    .lightbox-next{right:.75rem;}
+    .lightbox-close{top:1rem;right:1rem;width:40px;height:40px;}
+    .lightbox-caption{width:calc(100% - 2rem);bottom:1rem;}
+    body{cursor:auto;}
+    .cursor,.cursor-ring{display:none;}
+  }
 </style>
 </head>
 <body>
