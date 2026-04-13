@@ -68,22 +68,10 @@
   .filter-btn{font-family:'Syne',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1.2rem;border:1.5px solid #333;background:transparent;color:#666;cursor:pointer;transition:all .2s;}
   .filter-btn.active,.filter-btn:hover{border-color:var(--pop1);color:var(--pop1);}
   .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:1100px;margin:0 auto;}
-  .portfolio-item{position:relative;overflow:hidden;cursor:pointer;background:var(--mid);}
-  .portfolio-item.large {
-  width: 100%;
-  max-width: 400px; /* control size */
-  height: 280px; /* fixed height */
-  overflow: hidden;
-  border-radius: 12px;
-  position: relative;
-}
-  .portfolio-item img{width:100%;height:100%;min-height:280px;object-fit:cover;display:block;transition:transform .5s ease;}
-  .portfolio-item video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* keeps it clean & fills nicely */
-  display: block;
-}
+  .portfolio-item{position:relative;overflow:hidden;cursor:pointer;background:var(--mid);border-radius:12px;}
+  .portfolio-item.large{width:100%;height:280px;position:relative;}
+  .portfolio-item img,
+  .portfolio-item video{width:100%;height:100%;display:block;object-fit:cover;transition:transform .5s ease;}
   .portfolio-item:hover img,.portfolio-item:hover video{transform:scale(1.05);}
   .portfolio-overlay{position:absolute;inset:0;background:rgba(0,0,0,.78);display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem;opacity:0;transition:opacity .3s;}
   .portfolio-item:hover .portfolio-overlay{opacity:1;}
@@ -189,15 +177,16 @@
   .masonry-item{
     break-inside:avoid;margin-bottom:6px;
     position:relative;overflow:hidden;cursor:pointer;
-    display:block;
+    display:block;border-radius:12px;background:var(--mid);
   }
-  .masonry-item img{
+  .masonry-item img,
+  .masonry-item video{
     width:100%;display:block;
+    height:auto;aspect-ratio:4/3;object-fit:cover;
     transition:transform .5s ease;
     border:none;outline:none;
-    height:auto;
   }
-  .masonry-item:hover img{transform:scale(1.05);}
+  .masonry-item:hover img,.masonry-item:hover video{transform:scale(1.05);}
   .masonry-overlay{
     position:absolute;inset:0;
     background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 50%);
@@ -224,10 +213,13 @@
     opacity:0;pointer-events:none;transition:opacity .3s;
   }
   .lightbox.open{opacity:1;pointer-events:all;}
-  .lightbox-img{
+  .lightbox-img,
+  .lightbox-video{
     max-width:88vw;max-height:88vh;
     object-fit:contain;border:1px solid #333;
+    background:#000;
   }
+  .lightbox-video{display:none;}
   .lightbox-close{
     position:absolute;top:1.5rem;right:1.5rem;
     width:44px;height:44px;border:1.5px solid #444;
@@ -369,10 +361,10 @@
 
     <!-- Pictures and Bars — large -->
     <div class="portfolio-item large" data-cat="Graphics">
-      <img src="Veal_flyer.jpg" loading="lazy" decoding="async" alt="Pictures and Bars Flyer">
+      <img src="Pictures_and_Bars.jpg" loading="lazy" decoding="async" alt="Pictures and Bars Flyer">
       <div class="portfolio-overlay">
         <span class="p-tag">Graphics Design</span>
-        <h3>Veal Flyer</h3>
+        <h3>Pictures & Bars</h3>
         <p>Editorial fashion flyer — collage style</p>
       </div>
     </div>
@@ -526,7 +518,7 @@
 
       <!-- 20 — 3D Mesh Animation -->
       <div class="masonry-item" data-gcat="3D Animation" data-title="Mesh Motion Study" data-desc="3D mesh animation — Blender">
-        <video autoplay muted loop playsinline preload="metadata" poster="Artboard 1.jpg" style="min-height:280px;object-fit:cover;">
+        <video autoplay muted loop playsinline preload="metadata" poster="Artboard 1.jpg">
           <source src="Mesh0001-0250.mp4" type="video/mp4">
         </video>
         <div class="masonry-overlay"><div class="m-cat">3D Animation</div><div class="m-title">Mesh Motion Study</div><div class="m-desc">3D animation — Blender</div></div>
@@ -534,7 +526,7 @@
 
       <!-- 21 — Shoe Promo Motion -->
       <div class="masonry-item" data-gcat="Motion" data-title="Shoe Promo Animation" data-desc="Product promotional motion video">
-        <video autoplay muted loop playsinline preload="metadata" poster="Artboard 1.jpg" style="min-height:280px;object-fit:cover;">
+        <video autoplay muted loop playsinline preload="metadata" poster="Artboard 1.jpg">
           <source src="SHOE_PROMO_ORI.mp4" type="video/mp4">
         </video>
         <div class="masonry-overlay"><div class="m-cat">Motion</div><div class="m-title">Shoe Promo Animation</div><div class="m-desc">Product promo motion video</div></div>
@@ -568,7 +560,7 @@
 
     <!-- TEMPLATE: duplicate this block to add more video works
     <div class="masonry-item" data-gcat="Motion" data-title="Project Title" data-desc="Short project description">
-      <video autoplay muted loop playsinline preload="metadata" poster="Artboard 1.jpg" style="min-height:280px;object-fit:cover;">
+      <video autoplay muted loop playsinline preload="metadata" poster="Artboard 1.jpg">
         <source src="your-video.mp4" type="video/mp4">
       </video>
       <div class="masonry-overlay">
@@ -587,6 +579,9 @@
   <button class="lightbox-close" id="lightboxClose">✕</button>
   <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
   <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <video class="lightbox-video" id="lightboxVideo" controls autoplay loop playsinline>
+    <source id="lightboxVideoSource" src="" type="video/mp4">
+  </video>
   <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
   <div class="lightbox-caption">
     <strong id="lightboxTitle"></strong>
@@ -827,18 +822,25 @@
   // ── LIGHTBOX ──
   const lightbox   = document.getElementById('lightbox');
   const lbImg      = document.getElementById('lightboxImg');
+  const lbVideo    = document.getElementById('lightboxVideo');
+  const lbVideoSrc = document.getElementById('lightboxVideoSource');
   const lbTitle    = document.getElementById('lightboxTitle');
   const lbDesc     = document.getElementById('lightboxDesc');
   const lbClose    = document.getElementById('lightboxClose');
   const lbPrev     = document.getElementById('lightboxPrev');
   const lbNext     = document.getElementById('lightboxNext');
 
-  let lbItems = [];  // visible items
+  let lbItems = [];
   let lbIndex = 0;
 
+  function getVisibleGalleryItems() {
+    return [...document.querySelectorAll('.masonry-item')]
+      .filter(item => item.style.display !== 'none');
+  }
+
   function openLightbox(idx) {
-    lbItems = [...document.querySelectorAll('.masonry-item')]
-      .filter(i => i.style.display !== 'none');
+    lbItems = getVisibleGalleryItems();
+    if (!lbItems.length) return;
     lbIndex = idx;
     showLbItem();
     lightbox.classList.add('open');
@@ -847,46 +849,62 @@
 
   function showLbItem() {
     const item = lbItems[lbIndex];
-    if(!item) return;
+    if (!item) return;
+
     const img = item.querySelector('img');
-    const video = item.querySelector('video source');
+    const videoSource = item.querySelector('video source');
+
+    lbImg.style.display = 'none';
+    lbVideo.style.display = 'none';
+    lbImg.src = '';
+    lbVideo.pause();
+    lbVideoSrc.src = '';
+
     if (img) {
       lbImg.src = img.src;
+      lbImg.alt = img.alt || item.dataset.title || '';
       lbImg.style.display = 'block';
-    } else if (video) {
-      lbImg.src = video.src;
-      lbImg.style.display = 'block';
-    } else {
-      lbImg.src = '';
+    } else if (videoSource) {
+      lbVideoSrc.src = videoSource.src;
+      lbVideo.load();
+      lbVideo.style.display = 'block';
     }
+
     lbTitle.textContent = item.dataset.title || '';
-    lbDesc.textContent  = item.dataset.desc  || '';
+    lbDesc.textContent  = item.dataset.desc || '';
   }
 
   function closeLightbox() {
     lightbox.classList.remove('open');
     document.body.style.overflow = '';
+    lbVideo.pause();
+    lbVideoSrc.src = '';
+    lbImg.src = '';
   }
 
-  gItems.forEach((item, i) => {
+  gItems.forEach(item => {
     item.addEventListener('click', () => {
-      const visibleItems = [...document.querySelectorAll('.masonry-item')]
-        .filter(it => it.style.display !== 'none');
+      const visibleItems = getVisibleGalleryItems();
       const idx = visibleItems.indexOf(item);
       openLightbox(idx >= 0 ? idx : 0);
     });
   });
 
   lbClose.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', e => { if(e.target === lightbox) closeLightbox(); });
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) closeLightbox();
+  });
 
   lbNext.addEventListener('click', e => {
     e.stopPropagation();
+    if (!lbItems.length) return;
     lbIndex = (lbIndex + 1) % lbItems.length;
     showLbItem();
   });
+
   lbPrev.addEventListener('click', e => {
     e.stopPropagation();
+    if (!lbItems.length) return;
     lbIndex = (lbIndex - 1 + lbItems.length) % lbItems.length;
     showLbItem();
   });
