@@ -266,6 +266,11 @@
     body{cursor:auto;}
     .cursor,.cursor-ring{display:none;}
   }
+
+  .media-loading{background:#1f1f1f;}
+  .media-loaded{animation:fadeMedia .35s ease;}
+  @keyframes fadeMedia{from{opacity:.15}to{opacity:1}}
+
 </style>
 </head>
 <body>
@@ -352,7 +357,7 @@
     <!-- 3D Animation featured large -->
     <div class="portfolio-item large" data-cat="3D Animation">
       <span class="video-badge">▶ 3D ANIMATION</span>
-      <video autoplay muted loop playsinline preload="metadata" poster="Artboard 1.jpg">
+      <video class="smart-video" autoplay muted loop playsinline preload="metadata" poster="Artboard 1.jpg">
         <source src="Mesh0001-0250.mp4" type="video/mp4">
       </video>
       <div class="portfolio-overlay">
@@ -507,7 +512,7 @@
 
       <!-- 20 — 3D Mesh Animation -->
       <div class="masonry-item" data-gcat="3D Animation" data-title="Mesh Motion Study" data-desc="3D mesh animation — Blender">
-        <video autoplay muted loop playsinline preload="metadata" poster="Artboard 1.jpg">
+        <video class="smart-video" autoplay muted loop playsinline preload="none" poster="Artboard 1.jpg">
           <source src="Mesh0001-0250.mp4" type="video/mp4">
         </video>
         <div class="masonry-overlay"><div class="m-cat">3D Animation</div><div class="m-title">Mesh Motion Study</div><div class="m-desc">3D animation — Blender</div></div>
@@ -515,7 +520,7 @@
 
       <!-- 21 — Shoe Promo Motion -->
       <div class="masonry-item" data-gcat="Motion" data-title="Shoe Promo Animation" data-desc="Product promotional motion video">
-        <video autoplay muted loop playsinline preload="metadata" poster="Artboard 1.jpg">
+        <video class="smart-video" autoplay muted loop playsinline preload="none" poster="Artboard 1.jpg">
           <source src="SHOE_PROMO_ORI.mp4" type="video/mp4">
         </video>
         <div class="masonry-overlay"><div class="m-cat">Motion</div><div class="m-title">Shoe Promo Animation</div><div class="m-desc">Product promo motion video</div></div>
@@ -580,7 +585,7 @@
 
 <!-- 30 — NSCHE Alumni 2 -->
 <div class="masonry-item" data-gcat="Graphics" data-title="NSCHE Alumni Design 02" data-desc="Alumni campaign visual">
-  <img src="NSChe Alumni_2.jpg" loading="lazy" decoding="async" alt="NSCHE Alumni 2">
+  <img src="NSChE Alumni_2.jpg" loading="lazy" decoding="async" alt="NSChE Alumni 2">
   <div class="masonry-overlay">
     <div class="m-cat">Graphics</div>
     <div class="m-title">NSCHE Alumni 02</div>
@@ -590,7 +595,7 @@
 
 <!-- 31 — NSCHE Alumni 3 -->
 <div class="masonry-item" data-gcat="Graphics" data-title="NSCHE Alumni Design 03" data-desc="Alumni campaign visual">
-  <img src="NSChe Alumni_3.jpg" loading="lazy" decoding="async" alt="NSCHE Alumni 3">
+  <img src="NSChE Alumni_3.jpg" loading="lazy" decoding="async" alt="NSChE Alumni 3">
   <div class="masonry-overlay">
     <div class="m-cat">Graphics</div>
     <div class="m-title">NSCHE Alumni 03</div>
@@ -600,7 +605,7 @@
 
 <!-- 32 — NSCHE December -->
 <div class="masonry-item" data-gcat="Graphics" data-title="NSCHE December" data-desc="December themed campaign design">
-  <img src="NSChe December.jpg" loading="lazy" decoding="async" alt="NSCHE December">
+  <img src="NSChE December.jpg" loading="lazy" decoding="async" alt="NSChE December">
   <div class="masonry-overlay">
     <div class="m-cat">Graphics</div>
     <div class="m-title">NSCHE December</div>
@@ -610,7 +615,7 @@
 
 <!-- 33 — NSCHE League -->
 <div class="masonry-item" data-gcat="Graphics" data-title="NSCHE League" data-desc="League promotion design">
-  <img src="NSChe League2.jpg" loading="lazy" decoding="async" alt="NSCHE League">
+  <img src="NSChE League2.jpg" loading="lazy" decoding="async" alt="NSChE League">
   <div class="masonry-overlay">
     <div class="m-cat">Graphics</div>
     <div class="m-title">NSCHE League</div>
@@ -620,7 +625,7 @@
 
 <!-- 34 — NSCHE Fresher -->
 <div class="masonry-item" data-gcat="Graphics" data-title="NSCHE Fresher Orientation" data-desc="Fresher orientation design">
-  <img src="NSChe Freshers_Orientation.jpg" loading="lazy" decoding="async" alt="NSCHE Fresher">
+  <img src="NSChE_Freshers_Ori.jpg" loading="lazy" decoding="async" alt="NSChE Fresher">
   <div class="masonry-overlay">
     <div class="m-cat">Graphics</div>
     <div class="m-title">Fresher Orientation</div>
@@ -630,7 +635,7 @@
 
 <!-- 35 — NSCHE Walk -->
 <div class="masonry-item" data-gcat="Graphics" data-title="NSCHE Walk Campaign" data-desc="Walk awareness design">
-  <img src="NSChe Walk.jpg" loading="lazy" decoding="async" alt="NSCHE Walk">
+  <img src="NSChE_Walk.jpg" loading="lazy" decoding="async" alt="NSChE Walk">
   <div class="masonry-overlay">
     <div class="m-cat">Graphics</div>
     <div class="m-title">NSCHE Walk</div>
@@ -660,7 +665,7 @@
 
     <!-- TEMPLATE: duplicate this block to add more video works
     <div class="masonry-item" data-gcat="Motion" data-title="Project Title" data-desc="Short project description">
-      <video autoplay muted loop playsinline preload="metadata" poster="Artboard 1.jpg">
+      <video class="smart-video" autoplay muted loop playsinline preload="none" poster="Artboard 1.jpg">
         <source src="your-video.mp4" type="video/mp4">
       </video>
       <div class="masonry-overlay">
@@ -1015,6 +1020,100 @@
     if(e.key === 'Escape') closeLightbox();
     if(e.key === 'ArrowRight') { lbIndex=(lbIndex+1)%lbItems.length; showLbItem(); }
     if(e.key === 'ArrowLeft')  { lbIndex=(lbIndex-1+lbItems.length)%lbItems.length; showLbItem(); }
+  });
+
+  // Media fallback + smarter loading
+  const mediaFallbacks = {
+    "NSCHE_HODS_CUP_CAMPAIGN.png": [
+      "NSChE_HODS_CUP_CAMPAIGN.png",
+      "NSCHE_HODS_CUP_CAMPAIGN.png",
+      "NSCHE_HODS_CUP_CAMPAIGN.jpg",
+      "NSCHE_HODS_CUP_CAMPAIGN.webp"
+    ],
+    "NSChE Alumni_2.jpg": [
+      "NSChE Alumni_2.jpg",
+      "NSCHE Alumni_2.jpg",
+      "NSChE_Alumni_2.jpg"
+    ],
+    "NSChE Alumni_3.jpg": [
+      "NSChE Alumni_3.jpg",
+      "NSCHE Alumni_3.jpg",
+      "NSChE_Alumni_3.jpg"
+    ],
+    "NSChE December.jpg": [
+      "NSChE December.jpg",
+      "NSCHE December.jpg",
+      "NSChE_December.jpg"
+    ],
+    "NSChE League2.jpg": [
+      "NSChE League2.jpg",
+      "NSChE Leagueu2.jpg",
+      "NSCHE League2.jpg",
+      "NSChE_League2.jpg"
+    ],
+    "NSChE_Freshers_Ori.jpg": [
+      "NSChE_Freshers_Ori.jpg",
+      "NSChE_Fresher's_Ori.jpg",
+      "NSChE Freshers_Ori.jpg",
+      "NSChE_Freshers_Orientation.jpg"
+    ],
+    "NSChE_Walk.jpg": [
+      "NSChE_Walk.jpg",
+      "NSChE Walk.jpg",
+      "NSCHE_Walk.jpg"
+    ]
+  };
+
+  function attachImageFallback(img){
+    const original = img.getAttribute('src');
+    const candidates = mediaFallbacks[original];
+    if(!candidates || !candidates.length) return;
+
+    let idx = 0;
+    img.addEventListener('error', function handleError(){
+      idx += 1;
+      if(idx < candidates.length){
+        img.src = candidates[idx];
+      } else {
+        img.removeEventListener('error', handleError);
+      }
+    });
+  }
+
+  document.querySelectorAll('img').forEach(img=>{
+    img.classList.add('media-loading');
+    if(!img.closest('#hero') && !img.closest('#about')){
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.fetchPriority = 'low';
+    }
+    img.addEventListener('load', ()=>{
+      img.classList.remove('media-loading');
+      img.classList.add('media-loaded');
+    }, {once:true});
+    attachImageFallback(img);
+  });
+
+  const smartVideos = document.querySelectorAll('.smart-video');
+  const videoObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      const video = entry.target;
+      if(entry.isIntersecting){
+        if(video.preload === 'none') video.preload = 'metadata';
+        video.play().catch(()=>{});
+      } else {
+        video.pause();
+      }
+    });
+  }, {rootMargin:'250px 0px', threshold:0.15});
+
+  smartVideos.forEach(video=>{
+    video.addEventListener('loadeddata', ()=>{
+      video.classList.remove('media-loading');
+      video.classList.add('media-loaded');
+    }, {once:true});
+    video.classList.add('media-loading');
+    videoObserver.observe(video);
   });
 
 </script>
